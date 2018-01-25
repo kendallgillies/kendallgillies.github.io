@@ -1,0 +1,21 @@
+# Site navigation links
+
+
+- title: Home
+  url: /
+  excerpt: "Return to Home"
+
+- title: Blog
+  url: /blog/
+  excerpt: "A Personal Blog"
+  image: type.jpg #400x250.gif
+
+- title: Portfolio
+  url: /media/
+  excerpt: "Showcase data science projects and mathematical concepts"
+  image: paint-brushes.jpg #400x250.gif
+
+- title: About
+  url: /about/
+  excerpt: "About Kendall Gillies"
+  image: coffee.jpg #400x250.gif

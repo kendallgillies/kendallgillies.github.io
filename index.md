@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+---
+layout: home
+permalink: /
+image:
+  feature: feature-image.jpg
+  credit: Steven Wang #name of the person or site you want to credit
+  creditlink: https://unsplash.com/@smwangphoto #url to their site or licensing
+---
 
-You can use the [editor on GitHub](https://github.com/kendallgillies/kendallgillies.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+<div class="tiles" align="center">
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<div class="tile">
+  <h2 class="post-title">Drawing Out The Story</h2>
+  <p class="post-excerpt">Descriptive analytics - say some stuff here</p>
+</div><!-- /.tile -->
 
-### Markdown
+<div class="tile">
+  <h2 class="post-title">Drawing Conclusions</h2>
+  <p class="post-excerpt">Prescriptive analytics - say some other stuff here</p>
+</div><!-- /.tile -->
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<div class="tile">
+  <h2 class="post-title">Drawing Up Future Plans</h2>
+  <p class="post-excerpt">Predictive analytics - say some really cool stuff here</p>
+</div><!-- /.tile -->
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](3021a4b.jpg)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kendallgillies/kendallgillies.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+</div><!-- /.tiles -->

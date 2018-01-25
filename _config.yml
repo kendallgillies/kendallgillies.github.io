@@ -1,1 +1,53 @@
-theme: jekyll-theme-architect
+# Site wide configuration
+
+title: Ditzy Not Dumb
+description: "Fun with Data Science"
+logo: 120x120.gif
+teaser: 400x250.gif
+locale: en_US
+# url: //mmistakes.github.io/skinny-bones-jekyll
+
+# Jekyll configuration
+
+sass:
+  sass_dir: _sass
+  style: compressed
+permalink: /:categories/:title/
+kramdown:
+  toc_levels: 1..2
+highlighter: rouge
+gems:
+  - jekyll-sitemap
+  - jekyll-gist
+
+
+# Octopress configuration
+
+# Default extensions
+post_ext: md
+page_ext: md
+
+# Found in _templates/
+post_layout: article
+page_layout: article
+
+# Format titles with titlecase?
+titlecase: true
+
+
+# Site owner
+owner:
+  name: Kendall Gillies
+  web: 
+  email: 
+  twitter: 
+  bio: "Data Scientist"
+  avatar: /images/bio-image.png # 160x160 px image for author byline
+  google:
+    plus: 
+    ad-client:
+    ad-slot:
+  disqus-shortname:
+
+
+exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
