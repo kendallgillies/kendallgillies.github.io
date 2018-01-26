@@ -5,13 +5,12 @@ categories: blog
 excerpt: "Metis project 1: Analyzing data from NYC Subway enries and exits"
 tags: [blog, metis, weighted average]
 image:
-  feature: subway-1565684.jpg
-  teaser: subway-1565684.jpg
+  feature: Benson_Blogs/subway-1565684_1920.jpg
+  teaser: Benson_Blogs/subway-1565684_1920.jpg
   credit: ShonEjai
   creditlink: https://pixabay.com/en/subway-subway-station-new-york-1565684/
 ---
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 {% include toc.html %}
 
 # Introduction
@@ -33,6 +32,7 @@ Our goal for the project was to find the stations with the highest traffic data 
 
 
 # The Data
+
 ## Introduction
 When first obtaining the data set from the MTA website the following variables are given:
 
@@ -65,9 +65,10 @@ To begin with, the easiest variables to throw out are LINENAME, DIVISION and DES
 
 
 ## Unique Turnstile Identifiers
+<p style="text-align: center">
+<img src="{{ site.url }}/images/Benson_Blogs/turnstile-796064_1920.jpg" width="500p">
+</p>
 
-<img src="{{ site.url }}/images/turnstile-796064_1920.jpg" width="150p">
-          
 Every individual turnstile in the MTA system has a unique identifier that can be found using a combination of booth name, unit ID, SCP and station.  Finding erroneous variables in the unique turnstile identifiers requires combining the variables C/A, UNIT, and SCP and finding the number of unique values. Note, the data will be later split by station, so it does not need to be included in the unique identifier.
 
 | **Possible Turnstile Identifiers** | **Number of Unique Identifiers** |
@@ -109,19 +110,19 @@ Once narrowing down to only the necessary variables, the data can now be separat
 
 ## What is a Weighted Average?
 
-What is a weighted average and how is it different from the standard average? The definition of a weighted average for a set of $n$ numbers, $x_1, x_2, \ldots, x_n$ is 
+What is a weighted average and how is it different from the standard average? The definition of a weighted average for a set of \\(n\\) numbers, \\(x_1, x_2, \ldots, x_n\\) is 
 
 $$\bar x_w = \sum^n_{k=1}w_kx_k = w_1x_1+w_2x_2+\ldots +w_nx_n,$$ 
 
-where $w_k$ denotes the weight for the $k^{th}$ element in the data set.  The weights picked can be any non-negative number ($w_k\geq 0$ for all $k$) with the caveat that
+where \\(w_k\\) denotes the weight for the \\(k^{th}\\) element in the data set.  The weights picked can be any non-negative number (\\(w_k\geq 0\\)) for all \\(k\\) with the caveat that
 
 $$\sum^n_{k=1}w_k = 1.$$
 
-When referencing the standard average of a set of $n$ numbers, $x_1, x_2, \ldots, x_n$ is
+When referencing the standard average of a set of \\(n\\) numbers, \\(x_1, x_2, \ldots, x_n\\) is
 
 $$\bar x  = \frac{1}{n}\sum^n_{k=1}x_k = \sum^n_{k=1}\frac{1}{n}x_k.$$ 
 
-Notice the similarities in the equations for $\bar x$ and $\bar x_w$.  The difference is that for a weighted average the individual data points are being multiplied by $w_k$ and in the standard average they are being multiplied by $1/n$.  Now notice adding $1/n$ $n$ times will yield 1,
+Notice the similarities in the equations for \\(\bar x\\) and \\(\bar x_w\\).  The difference is that for a weighted average the individual data points are being multiplied by \\(w_k\\) and in the standard average they are being multiplied by \\(1/n\\).  Now notice adding \\(1/n\\) \\(n\\) times will yield 1,
 
 $$\sum^n_{k=1}\frac{1}{n}=\frac{1}{n}\sum^n_{k=1}1=\frac{1}{n}n=1,$$
 
@@ -132,30 +133,34 @@ A weighted average is used in finding an estimate for a set of data points where
 
 $$\bar x = \frac{1}{2}\times50+\frac{1}{2}\times100 = 75.$$
 
-To the best of our knowledge, there is an equally likely chance a student will earn either a 50 or 100; therefore, the weights should be equal.  Now, if it was known that $90\%$ of the past students scored a 100, then a better estimate for the expected average grade would be:
+To the best of our knowledge, there is an equally likely chance a student will earn either a 50 or 100; therefore, the weights should be equal.  Now, if it was known that \\(90\%\\) of the past students scored a 100, then a better estimate for the expected average grade would be:
 
 $$\bar x_w = 0.10\times50+0.90\times100 = 95$$
 
-Notice that the weights 0=$0.90$ and $0.10$ satisfy the criteria of adding to one. While, which weights to choose are not always clear, for our problem it is.
+Notice that the weights \\(0.90\\) and \\(0.10\\) satisfy the criteria of adding to one. While, which weights to choose are not always clear, for our problem it is.
 
 ### Ridership Problem
 
 Theoretically, each individual turnstile in each station recorded a cumulative count for entries and exits for every four hours starting at time 00:00 (midnight); however, in practice, approximately 52% of the data set contains times that did not fall on these time points. For each time point that does not fall on the desired time points there will be data for a time that is earlier (left time) and later (right time) than this time.  For example, if there is not a data point for 08:00 but there are data points at 05:00 and 09:00. 
 
-![Benson_Blog_1](/Users/kendallgillies/Desktop/GitHub/kendallgillies.github.io/images/Benson_Blogs/Benson_Blog_1.jpeg)
+<p style="text-align: center">
+<img src="{{ site.url }}/images/Benson_Blogs/Benson_Blog_1.jpeg" width="500p">
+</p>
 
 The data point at 09:00 is only one hour from 08:00, whereas the data point at 05:00 is 3 hours from 08:00.  
 
-![Benson_Blog_2](/Users/kendallgillies/Desktop/GitHub/kendallgillies.github.io/images/Benson_Blogs/Benson_Blog_2.jpeg)
+<p style="text-align: center">
+<img src="{{ site.url }}/images/Benson_Blogs/Benson_Blog_2.jpeg" width="500p">
+</p>
 
 Because of this, the actual data for 08:00 should look more like the data point for the closer time, 09:00.  Therefore, the weights for the weighted average should depend on the amount of time between the desired time point and the higher and lower time points.  Since the distance from the desired time point and how important the data point is are inversely related, a good starting place for the weights are the inverse of the distance.
 
 |                     | **Notation For Weight** | **Time Points** | **Distance from Desired Time Point** | **Initial Weight Guess** |
 | ------------------- | ----------------------- | --------------- | ------------------------------------ | ------------------------ |
-| **High Time Point** | $w_r$                   | 09:00           | 1hr                                  | $1/1=1$                  |
-| **Low Time Point**  | $w_l$                   | 05:00           | 3hrs                                 | $1/3$                    |
+| **High Time Point** | \\(w_r\\)               | 09:00           | 1hr                                  | \\(1/1=1\\)              |
+| **Low Time Point**  | \\(w_l\\)               | 05:00           | 3hrs                                 | \\(1/3\\)                |
 
-While a weight of 1 will but more emphasis on the data point for 09:00 compared with a weight of 1/3 for 05:00, the sum of the weights do not equal one.  Fixing this will require normalizing the weights with a normalizing constant, $N$.
+While a weight of 1 will but more emphasis on the data point for 09:00 compared with a weight of 1/3 for 05:00, the sum of the weights do not equal one.  Fixing this will require normalizing the weights with a normalizing constant, \\(N\\).
 
 $$1 = \frac{1+1/3}{N} \implies N = 1+1/3$$
 
@@ -163,23 +168,23 @@ From the above equations, it is apparent the normalizing constant is the sum of 
 
 |                     | **Notation For Weight** | **Time Points** | **Distance from Desired Time Point** | **Initial Weight Guess** | Normalizing Constant | **Actual Weights**                       |
 | ------------------- | ----------------------- | --------------- | ------------------------------------ | ------------------------ | -------------------- | ---------------------------------------- |
-| **High Time Point** | $w_r$                   | 09:00           | 1hr                                  | 1                        | 4/3                  | $\displaystyle \frac{1}{4/3}=\frac{3}{4}$ |
-| **Low Time Point**  | $w_l$                   | 05:00           | 3hrs                                 | 1/3                      | 4/3                  | $\displaystyle \frac{1/3}{4/3}=\frac{1}{3}$ |
+| **High Time Point** | \\(w_r\\)               | 09:00           | 1hr                                  | 1                        | 4/3                  | \\(\displaystyle \frac{1}{4/3}=\frac{3}{4}\\) |
+| **Low Time Point**  | \\(w_l\\)               | 05:00           | 3hrs                                 | 1/3                      | 4/3                  | \\(\displaystyle \frac{1/3}{4/3}=\frac{1}{3}\\) |
 
 To expand this to a more generalized example we will denote the following variables:
 
 | **Time Point Variables** | **Time Point Descriptions**              | **Cumulative Ridership Variables** | **Cumulative Ridership (Data Point) Description** |
 | ------------------------ | ---------------------------------------- | ---------------------------------- | ---------------------------------------- |
-| **$x$**                  | Desired time point                       | $\bar c_w$                         | Cumulative ridership for the desired time point |
-| **$x_r$**                | Time point above (to the right) of the desired time point | $c_r$                              | Cumulative ridership for the time point above (to the right) of the desired time point |
-| **$x_l$**                | Time point below (to the left) of the desired time point | $c_l$                              | Cumulative ridership for the time point below (to the left) of the desired time point |
+| **\\(x\\)**              | Desired time point                       | \\(\bar c_w\\)                     | Cumulative ridership for the desired time point |
+| **\\(x_r\\)**            | Time point above (to the right) of the desired time point | \\(c_r\\)                          | Cumulative ridership for the time point above (to the right) of the desired time point |
+| \\(x_l\\)                | Time point below (to the left) of the desired time point | \\(c_l\\)                          | Cumulative ridership for the time point below (to the left) of the desired time point |
 
 Generalizing the example using the above notation we have:
 
-|                     | **Notation For Weight** | **Time Points** | **Distance from Desired Time Point** | **Initial Weight Guess**        | Normalizing Constant                     | **Actual Weights**                       |
-| ------------------- | ----------------------- | --------------- | ------------------------------------ | ------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| **High Time Point** | $w_r$                   | $x_r$           | $x_r-x$                              | $\displaystyle \frac{1}{x_r-x}$ | $\displaystyle \frac{1}{x_r-x}+\frac{1}{x-x_l}$ | $\displaystyle \frac{\frac{1}{x_r-x}}{\frac{1}{x-x_l}+\frac{1}{x_r-x}}=\frac{x-x_r}{x_l-x_r}$ |
-| **Low Time Point**  | $w_l$                   | $x_l$           | $x-x_l$                              | $\displaystyle \frac{1}{x-x_l}$ | $\displaystyle \frac{1}{x_r-x}+\frac{1}{x-x_l}$ | $\displaystyle \frac{\frac{1}{x-x_l}}{\frac{1}{x-x_l}+\frac{1}{x_r-x}}=\frac{x_r-x}{x_l-x_r}$ |
+|                     | **Notation For Weight** | **Time Points** | **Distance from Desired Time Point** | **Initial Weight Guess**            | Normalizing Constant                     | **Actual Weights**                       |
+| ------------------- | ----------------------- | --------------- | ------------------------------------ | ----------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| **High Time Point** | \\(w_r\\)               | \\(x_r\\)       | \\(x_r-x\\)                          | \\(\displaystyle \frac{1}{x_r-x}\\) | \\(\displaystyle \frac{1}{x_r-x}+\frac{1}{x-x_l}\\) | \\(\displaystyle \frac{\frac{1}{x_r-x}}{\frac{1}{x-x_l}+\frac{1}{x_r-x}}=\frac{x-x_r}{x_l-x_r}\\) |
+| **Low Time Point**  | \\(w_l\\)               | \\(x_l\\)       | \\(x-x_l\\)                          | \\(\displaystyle \frac{1}{x-x_l}\\) | \\(\displaystyle \frac{1}{x_r-x}+\frac{1}{x-x_l}\\) | \\(\displaystyle \frac{\frac{1}{x-x_l}}{\frac{1}{x-x_l}+\frac{1}{x_r-x}}=\frac{x_r-x}{x_l-x_r}\\) |
 
 Hence the weighted average using the length of time as weights is given by:
 
@@ -219,7 +224,9 @@ df_L = df_L.rename(columns={'Date':'Right_Date','Number':'Right_Number'})
 ```
 For example, the time interval from 04:00 to 08:00 would be represented by 04:00 (the left number) and the interval of time values would be from [04:00,08:00).  
 
-![Benson_Blog_3](/Users/kendallgillies/Desktop/GitHub/kendallgillies.github.io/images/Benson_Blogs/Benson_Blog_3.jpeg)
+<p style="text-align: center">
+<img src="{{ site.url }}/images/Benson_Blogs/Benson_Blog_3.jpeg" width="500p">
+</p>
 
 The first function on resample takes the data point from the first valid time sample.  This would return the number 04:00 as the time point and the data point would belong to either 04:00 or something larger than 04:00 if it was not a given data point.
 
@@ -232,11 +239,13 @@ df_R = df_R.rename(columns={'Date':'Left_Date','Number':'Left_Number'})
 
 For example, the time interval from 00:00 to 04:00 would be represented by 04:00 (the right number) and the interval of time values would be from (00:00,04:00].  
 
-![Benson_Blog_4](/Users/kendallgillies/Desktop/GitHub/kendallgillies.github.io/images/Benson_Blogs/Benson_Blog_4.jpeg)
+<p style="text-align: center">
+<img src="{{ site.url }}/images/Benson_Blogs/Benson_Blog_4.jpeg" width="500p">
+</p>
 
 The last function on resample takes the data point from the last valid time sample.  This would return the number 04:00 as the time point and the data point would belong to either 04:00 or something smaller than 04:00 if it was not a given data point.
 
-Notice in the two figures above, if the time point 04:00 has a data value than it will be selected as both the right and left number.  When this happens the weights are set to be equal ($w_l=w_r=1/2$).  Combining the right and left points into a dataframe gives
+Notice in the two figures above, if the time point 04:00 has a data value than it will be selected as both the right and left number.  When this happens the weights are set to be equal (\\(w_l=w_r=1/2\\)).  Combining the right and left points into a dataframe gives
 
 |                         | **Left_Number** | **Left_Date**       | **Right_Number** | **Right_Date**      |
 | ----------------------- | --------------- | ------------------- | ---------------- | ------------------- |
