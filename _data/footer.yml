@@ -3,11 +3,11 @@
 - title: Home
   url: /
 
-- title: Blog
+- title: Technical Blog
   url: /blog/
 
-- title: Portfolio
-  url: /media/
+- title: Results Blog
+  url: /articles/
 
 - title: About
   url: /about/

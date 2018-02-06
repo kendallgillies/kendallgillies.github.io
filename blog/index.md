@@ -1,8 +1,8 @@
 ---
 layout: article
-title: "Personal Blog"
+title: "Technical Blog"
 modified:
-excerpt: "A collection of thoughts, inspiration, mistakes, and other minutia."
+excerpt: "The technical side to data science."
 tags: []
 image:
   feature:
