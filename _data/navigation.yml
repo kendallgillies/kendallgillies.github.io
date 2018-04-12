@@ -7,7 +7,7 @@
   image: Pepper_2.jpg
 
 - title: Technical Blog
-  url: /blog/
+  url: /technical_blog/
   excerpt: "The technical side of data science"
   image: Sonny_1.jpg #400x250.gif
 
