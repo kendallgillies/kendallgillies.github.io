@@ -12,7 +12,7 @@
   image: Sonny_1.jpg #400x250.gif
 
 - title: Results Blog
-  url: /articles/
+  url: /results_blog/
   excerpt: "Results of data science projects"
   image: Pepper_1.jpg #400x250.gif
 
